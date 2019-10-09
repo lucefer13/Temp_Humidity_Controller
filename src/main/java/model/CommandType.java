@@ -3,6 +3,7 @@ package model;
 public enum CommandType {
     STATUS("Get status of inner sensor and outer sensor"),
     FIND_COM("Find senors port number, and automatical set port number"),
+    EXIT("Exit w close THC001 port"),
     //   SETUP_ALERTS("Setup alert events"),
     //   SETUP_COM("Non automatical setup of port numbers"),
     //   SETUP_MAIL("Setup mail accaunt"),
