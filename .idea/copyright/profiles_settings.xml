@@ -2,6 +2,7 @@
   <settings>
     <LanguageOptions name="JAVA">
       <option name="fileTypeOverride" value="3" />
+      <option name="fileLocation" value="3" />
     </LanguageOptions>
   </settings>
 </component>
