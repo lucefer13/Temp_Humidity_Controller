@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e021bc2f-993a-4c65-a962-c3668639e9f8" name="Default" comment="Add start menu">
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/GilvanovDR.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/Main.java" />
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/main/java/model/CommandType.java" />
+    <list default="true" id="e021bc2f-993a-4c65-a962-c3668639e9f8" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF" afterPath="$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -43,7 +38,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommandType.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="CommandType.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/model/CommandType.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="220">
@@ -68,11 +63,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MANIFEST.MF" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            <state relative-caret-position="88">
+              <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -100,11 +95,11 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF" />
         <option value="$PROJECT_DIR$/src/main/java/commandType.java" />
         <option value="$PROJECT_DIR$/src/main/java/CommandType.java" />
         <option value="$PROJECT_DIR$/src/main/java/model/CommandType.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF" />
       </list>
     </option>
   </component>
@@ -356,7 +351,7 @@
       <option name="presentableId" value="Default" />
       <updated>1570416064615</updated>
       <workItem from="1570416071786" duration="2856000" />
-      <workItem from="1570590671088" duration="4945000" />
+      <workItem from="1570590671088" duration="5096000" />
     </task>
     <task id="LOCAL-00001" summary="Temp_Humidity_Controller &#10;A program for reading and analyzing temperature and humidity from two sensors.">
       <created>1570416628049</created>
@@ -379,15 +374,21 @@
       <option name="project" value="LOCAL" />
       <updated>1570418477400</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Add start menu">
+      <created>1570600572905</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1570600572905</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7801000" />
+    <option name="totallyTimeSpent" value="7952000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1696" height="1026" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -402,7 +403,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25305623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25305623" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -502,6 +503,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="0" lean-forward="true" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/model/CommandType.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
@@ -512,14 +521,6 @@
             <element signature="e#547#548#0" expanded="true" />
             <element signature="e#581#582#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/MAETA-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="16" lean-forward="true" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
     </entry>
