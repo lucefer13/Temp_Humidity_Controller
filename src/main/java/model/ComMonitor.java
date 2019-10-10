@@ -8,6 +8,7 @@ public class ComMonitor extends Thread {
     private static String COMPORT;
     private String msg;
     private Boolean isPortOpen;
+    private Scheduler sheduler;
 
     public ComMonitor(String comPort) {
         COMPORT = comPort;
@@ -19,6 +20,8 @@ public class ComMonitor extends Thread {
         SerialPort serialPort = new SerialPort(COMPORT);
         try {
             serialPort.openPort();
+            sheduler = new Scheduler(this);
+            sheduler.start();
             //Выставляем параметры
             serialPort.setParams(SerialPort.BAUDRATE_9600,
                     SerialPort.DATABITS_8,
@@ -34,6 +37,7 @@ public class ComMonitor extends Thread {
                         //Получаем ответ от устройства, обрабатываем данные и т.д.
                         msg = serialPort.readString(event.getEventValue());
                         if (!isPortOpen) {
+                            sheduler.setMonitoring(false);
                             serialPort.closePort();
                         }
                     } catch (SerialPortException ex) {
