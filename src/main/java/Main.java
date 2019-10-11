@@ -9,47 +9,73 @@ import java.io.InputStreamReader;
 public class Main {
     // mask from controller: THC001 27.90 26.50 28.40 26.10
     public static void main(String[] args) throws IOException, InterruptedException {
-        System.out.println("THC001_Shell start processing...");
+        System.out.println("THC001_Shell start service...");
         String portNum = Config.get().getPortNumber();
         if ("auto".equals(portNum)) {
             portNum = UtilPort.get().portFinder(false);
         }
         //TODO check valid comPort from model.Config (refactor UtilPort to exist mode)
         ComMonitor comMonitor = new ComMonitor(portNum);
+        System.out.println("THC001_Shell start service...DONE");
         comMonitor.start();
-
         Thread.sleep(500);
-
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        String command;
-        System.out.print("THC001_Shell>");
-
-        // TODO refactor while (add EXIT to switch case
-        while (!"EXIT".equals((command = br.readLine().toUpperCase()))) {
+        String command = "";
+        System.out.println();
+        while (!"EXIT".equals(command)) {
             try {
+                System.out.print("THC001_Shell>");
+                command = br.readLine().toUpperCase();
                 switch (CommandType.valueOf(command)) {
                     case STATUS:
                         //TODO print Active ComNumber, parsing and scheduler
-                        System.out.println(comMonitor.getMsg());
-
+                        if (comMonitor.getMsg() == null) {
+                            System.out.println("Controller not connected ");
+                        } else {
+                            System.out.println();
+                            System.out.println("Port number: " + comMonitor.getCOMPORT());
+                            String[] values = comMonitor.getMsg().split(" ");
+                            System.out.println("Controller name: " + values[0]);
+                            System.out.println("Inner humidity: " + values[1]);
+                            System.out.println("Inner temperature: " + values[2]);
+                            System.out.println("Outer humidity: " + values[3]);
+                            System.out.println("Outer temperature: " + values[4]);
+                            System.out.println();
+                        }
                         break;
                     case FIND_COM:
                         UtilPort.get().portFinder(true);
                         break;
                     case TEST_SNMP:
-                        TrapSender.getINSTANCE().sendTrap("Test" + comMonitor.getMsg());
+                        System.out.println();
+                        String[] valuse = TrapSender.getSNMPSettings();
+                        System.out.println("Port: " + valuse[0]);
+                        System.out.println("Community: " + valuse[1]);
+                        System.out.println("Oid: " + valuse[2]);
+                        System.out.println("Ip: " + valuse[3]);
+                        System.out.println("Test message send to SNMP");
+                        TrapSender.getINSTANCE().sendTrap("Test THC001 SNMP");
+                        System.out.println();
                         break;
+                    case EXIT:
+                        System.out.println();
+                        comMonitor.closePor();
+                        System.out.println("THC001_Shell stop service...");
+                        break;
+                    case HELP:
                     case COMMAND_LIST:
-                        for (CommandType commandType : CommandType.values()) {
+                    System.out.println();
+                    for (CommandType commandType : CommandType.values()) {
                             System.out.println(commandType);
                         }
-                        break;
+                    System.out.println();
+                    break;
                 }
             } catch (IllegalArgumentException e) {
-                System.out.println("Wrong command. Enter COMMAND_LIST to take all commands");
+                System.out.println();
+                System.out.println("Wrong command. Enter COMMAND_LIST / HELP to take all commands");
+                System.out.println();
             }
-            System.out.print("THC001_Shell>");
         }
-        comMonitor.closePor();
     }
 }

@@ -62,7 +62,16 @@ public class TrapSender {
         snmp.send(pdu, cTarget);
         snmp.close();
     }
-/*         catch (Exception e) {
+
+    public static String[] getSNMPSettings() {
+        String[] values = new String[4];
+        values[0] = String.valueOf(port);
+        values[1] = String.valueOf(community);
+        values[2] = String.valueOf(oid);
+        values[3] = String.valueOf(ipAddress);
+        return values;
+    }
+    /*         catch (Exception e) {
                 e.printStackTrace();
         }*/
 }

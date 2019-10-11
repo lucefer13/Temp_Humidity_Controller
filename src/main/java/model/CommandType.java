@@ -11,7 +11,8 @@ public enum CommandType {
     //   SETUP_MAIL("Setup mail accaunt"),
     //   SETUP_SNMP("Setup SNMP protocol"),
     //   SETUP_FILE("File with alerts message"),
-    COMMAND_LIST("This list");
+    COMMAND_LIST("This list"),
+    HELP("This list");
 
     private final String title;
 

@@ -8,7 +8,7 @@ public class ComMonitor extends Thread {
     private static String COMPORT;
     private String msg;
     private Boolean isPortOpen;
-    private Scheduler sheduler;
+    private Scheduler scheduler;
 
     public ComMonitor(String comPort) {
         COMPORT = comPort;
@@ -20,8 +20,8 @@ public class ComMonitor extends Thread {
         SerialPort serialPort = new SerialPort(COMPORT);
         try {
             serialPort.openPort();
-            sheduler = new Scheduler(this);
-            sheduler.start();
+            scheduler = new Scheduler(this);
+            scheduler.start();
             //Выставляем параметры
             serialPort.setParams(SerialPort.BAUDRATE_9600,
                     SerialPort.DATABITS_8,
@@ -37,7 +37,7 @@ public class ComMonitor extends Thread {
                         //Получаем ответ от устройства, обрабатываем данные и т.д.
                         msg = serialPort.readString(event.getEventValue());
                         if (!isPortOpen) {
-                            sheduler.setMonitoring(false);
+                            scheduler.setMonitoring(false);
                             serialPort.closePort();
                         }
                     } catch (SerialPortException ex) {
@@ -49,6 +49,10 @@ public class ComMonitor extends Thread {
                 SerialPortException ex) {
             System.out.println("DHC001 port error, please check config file and controller");
         }
+    }
+
+    public String getCOMPORT() {
+        return COMPORT;
     }
 
     public String getMsg() {
