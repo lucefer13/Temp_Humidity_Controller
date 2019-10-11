@@ -1,7 +1,7 @@
 package model;
 
 public enum CommandType {
-    STATUS("Get status of inner sensor and outer sensor"),
+    STATUS("Get status of first sensor and second sensor"),
     FIND_COM("Find senors port number, and automatical set port number"),
     TEST_SNMP("Test snmp"),
     EXIT("Exit w close THC001 port"),

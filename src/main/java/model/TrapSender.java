@@ -1,5 +1,6 @@
 package model;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
 import org.snmp4j.Snmp;
@@ -36,36 +37,40 @@ public class TrapSender {
         return INSTANCE;
     }
 
-    public void sendTrap(String text) throws IOException {
+    public void sendTrap(String text) {
         if (Math.abs(lastSend - new Date().getTime())>pause) {
             /* Create Transport Mapping */
             lastSend = new Date().getTime();
-            TransportMapping transport = new DefaultUdpTransportMapping();
-            transport.listen();
-            // Create Target
-            CommunityTarget cTarget = new CommunityTarget();
-            cTarget.setCommunity(new OctetString(community));
-            cTarget.setVersion(SnmpConstants.version2c);
-            cTarget.setAddress(new UdpAddress(ipAddress + "/" + port));
-            cTarget.setRetries(2);
-            cTarget.setTimeout(5000);
-            // Create PDU for V2
-            PDU pdu = new PDU();
-            // need to specify the system up time
-            pdu.add(new VariableBinding(SnmpConstants.sysUpTime,
-                    new OctetString(new Date().toString())));
-            pdu.add(new VariableBinding(SnmpConstants.snmpTrapOID, new OID(
-                    oid)));
-            pdu.add(new VariableBinding(SnmpConstants.snmpTrapAddress,
-                    new IpAddress(ipAddress)));
-            pdu.add(new VariableBinding(new OID(oid), new OctetString(
-                    text)));
-            pdu.setType(PDU.NOTIFICATION);
-            // Send the PDU
-            Snmp snmp = new Snmp(transport);
-            //   System.out.println("Sending V2 Trap... Check Wheather NMS is Listening or not? ");
-            snmp.send(pdu, cTarget);
-            snmp.close();
+            try {
+                TransportMapping transport = new DefaultUdpTransportMapping();
+                transport.listen();
+                // Create Target
+                CommunityTarget cTarget = new CommunityTarget();
+                cTarget.setCommunity(new OctetString(community));
+                cTarget.setVersion(SnmpConstants.version2c);
+                cTarget.setAddress(new UdpAddress(ipAddress + "/" + port));
+                cTarget.setRetries(2);
+                cTarget.setTimeout(5000);
+                // Create PDU for V2
+                PDU pdu = new PDU();
+                // need to specify the system up time
+                pdu.add(new VariableBinding(SnmpConstants.sysUpTime,
+                        new OctetString(new Date().toString())));
+                pdu.add(new VariableBinding(SnmpConstants.snmpTrapOID, new OID(
+                        oid)));
+                pdu.add(new VariableBinding(SnmpConstants.snmpTrapAddress,
+                        new IpAddress(ipAddress)));
+                pdu.add(new VariableBinding(new OID(oid), new OctetString(
+                        text)));
+                pdu.setType(PDU.NOTIFICATION);
+                // Send the PDU
+                Snmp snmp = new Snmp(transport);
+                //   System.out.println("Sending V2 Trap... Check Wheather NMS is Listening or not? ");
+                snmp.send(pdu, cTarget);
+                snmp.close();
+            }catch (Exception e){
+                System.out.println("Lan error");
+            }
         }
     }
 

@@ -36,10 +36,10 @@ public class Main {
                             System.out.println("Port number: " + comMonitor.getCOMPORT());
                             String[] values = comMonitor.getMsg().split(" ");
                             System.out.println("Controller name: " + values[0]);
-                            System.out.println("Inner humidity: " + values[1]);
-                            System.out.println("Inner temperature: " + values[2]);
-                            System.out.println("Outer humidity: " + values[3]);
-                            System.out.println("Outer temperature: " + values[4]);
+                            System.out.println("First humidity: " + values[1]);
+                            System.out.println("First temperature: " + values[2]);
+                            System.out.println("Second humidity: " + values[3]);
+                            System.out.println("Second temperature: " + values[4]);
                             System.out.println();
                         }
                         break;

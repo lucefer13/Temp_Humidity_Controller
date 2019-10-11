@@ -22,14 +22,14 @@ public class Config {
             properties.load(is);
             portNumber = properties.getProperty("port.number");
 
-            alertsList.put("inner.t.max", Double.parseDouble(properties.getProperty("inner.t.max")));
-            alertsList.put("inner.t.min", Double.parseDouble(properties.getProperty("inner.t.min")));
-            alertsList.put("inner.h.max", Double.parseDouble(properties.getProperty("inner.h.max")));
-            alertsList.put("inner.h.min", Double.parseDouble(properties.getProperty("inner.h.min")));
-            alertsList.put("outer.t.min", Double.parseDouble(properties.getProperty("outer.t.min")));
-            alertsList.put("outer.h.max", Double.parseDouble(properties.getProperty("outer.h.max")));
-            alertsList.put("outer.h.min", Double.parseDouble(properties.getProperty("outer.h.min")));
-            alertsList.put("outer.t.max", Double.parseDouble(properties.getProperty("outer.t.max")));
+            alertsList.put("first.t.max", Double.parseDouble(properties.getProperty("first.t.max")));
+            alertsList.put("first.t.min", Double.parseDouble(properties.getProperty("first.t.min")));
+            alertsList.put("first.h.max", Double.parseDouble(properties.getProperty("first.h.max")));
+            alertsList.put("first.h.min", Double.parseDouble(properties.getProperty("first.h.min")));
+            alertsList.put("second.t.min", Double.parseDouble(properties.getProperty("second.t.min")));
+            alertsList.put("second.h.max", Double.parseDouble(properties.getProperty("second.h.max")));
+            alertsList.put("second.h.min", Double.parseDouble(properties.getProperty("second.h.min")));
+            alertsList.put("second.t.max", Double.parseDouble(properties.getProperty("second.t.max")));
 
             snmpSettings.put("community", properties.getProperty("snmp.community"));
             snmpSettings.put("oid", properties.getProperty("snmp.oid"));

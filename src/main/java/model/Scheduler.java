@@ -48,34 +48,34 @@ public class Scheduler extends Thread {
     private String alertTest(String[] arrValue, Map<String, Double> alertsList) {
         StringBuilder sb = new StringBuilder();
         if (!"nan".equals(arrValue[1])) {
-            if (Double.parseDouble(arrValue[1]) > alertsList.get("inner.h.max")) sb.append("inner humidity > ")
-                    .append(alertsList.get("inner.h.max"))
+            if (Double.parseDouble(arrValue[1]) > alertsList.get("first.h.max")) sb.append("first humidity > ")
+                    .append(alertsList.get("first.h.max"))
                     .append("\n");
-            if (Double.parseDouble(arrValue[1]) < alertsList.get("inner.h.min")) sb.append("inner humidity < ")
-                    .append(alertsList.get("inner.h.max"))
+            if (Double.parseDouble(arrValue[1]) < alertsList.get("first.h.min")) sb.append("first humidity < ")
+                    .append(alertsList.get("first.h.max"))
                     .append("\n");
-            if (Double.parseDouble(arrValue[2]) > alertsList.get("inner.t.max")) sb.append("inner temperature > ")
-                    .append(alertsList.get("inner.t.max"))
+            if (Double.parseDouble(arrValue[2]) > alertsList.get("first.t.max")) sb.append("first temperature > ")
+                    .append(alertsList.get("first.t.max"))
                     .append("\n");
-            if (Double.parseDouble(arrValue[2]) < alertsList.get("inner.t.min")) sb.append("inner temperature < ")
-                    .append(alertsList.get("inner.t.min"))
+            if (Double.parseDouble(arrValue[2]) < alertsList.get("first.t.min")) sb.append("first temperature < ")
+                    .append(alertsList.get("first.t.min"))
                     .append("\n");
-        } else sb.append("outer sensor did't work \n");
+        } else sb.append("second sensor did't work \n");
 
         if (!"nan".equals(arrValue[3])) {
-            if (Double.parseDouble(arrValue[3]) > alertsList.get("outer.h.max")) sb.append("outer humidity > ")
-                    .append(alertsList.get("outer.h.max"))
+            if (Double.parseDouble(arrValue[3]) > alertsList.get("second.h.max")) sb.append("second humidity > ")
+                    .append(alertsList.get("second.h.max"))
                     .append("\n");
-            if (Double.parseDouble(arrValue[3]) < alertsList.get("outer.h.min")) sb.append("outer humidity < ")
-                    .append(alertsList.get("outer.h.min"))
+            if (Double.parseDouble(arrValue[3]) < alertsList.get("second.h.min")) sb.append("second humidity < ")
+                    .append(alertsList.get("second.h.min"))
                     .append("\n");
-            if (Double.parseDouble(arrValue[4]) > alertsList.get("outer.t.max")) sb.append("outer temperature > ")
-                    .append(alertsList.get("outer.t.max"))
+            if (Double.parseDouble(arrValue[4]) > alertsList.get("second.t.max")) sb.append("second temperature > ")
+                    .append(alertsList.get("second.t.max"))
                     .append("\n");
-            if (Double.parseDouble(arrValue[4]) < alertsList.get("outer.t.min")) sb.append("outer temperature < ")
-                    .append(alertsList.get("outer.t.min"))
+            if (Double.parseDouble(arrValue[4]) < alertsList.get("second.t.min")) sb.append("second temperature < ")
+                    .append(alertsList.get("second.t.min"))
                     .append("\n");
-        } else sb.append("inner sensor did't work \n");
+        } else sb.append("first sensor did't work \n");
         return sb.toString();
     }
 }
