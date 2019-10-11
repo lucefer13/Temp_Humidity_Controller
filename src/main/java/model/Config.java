@@ -34,6 +34,9 @@ public class Config {
             snmpSettings.put("community", properties.getProperty("snmp.community"));
             snmpSettings.put("oid", properties.getProperty("snmp.oid"));
             snmpSettings.put("ip", properties.getProperty("snmp.ip"));
+            snmpSettings.put("message", properties.getProperty("snmp.message"));
+            snmpSettings.put("pause", properties.getProperty("snmp.pause"));
+
 
         } catch (Exception e) {
             throw new IllegalStateException("Invalid config file " + PROPERTIES_FILE.getAbsolutePath());

@@ -6,11 +6,12 @@ import java.util.Map;
 public class Scheduler extends Thread {
     private final ComMonitor comMonitor;
     private Boolean isMonitoring;
-
+    private final String message;
 
     Scheduler(ComMonitor comMonitor) {
         this.comMonitor = comMonitor;
         isMonitoring = true;
+        message = Config.get().getSnmpSettings().get("message");
 
     }
 
@@ -19,13 +20,10 @@ public class Scheduler extends Thread {
     }
 
     @Override
-
     public void run() {
         String msgFromMonitor;
         String[] arrValue;
         String buffer;
-
-
         while (isMonitoring) {
             msgFromMonitor = comMonitor.getMsg();
             if (msgFromMonitor != null) {
@@ -33,7 +31,7 @@ public class Scheduler extends Thread {
                 buffer = alertTest(arrValue, Config.get().getAlertsList());
                 if (buffer.length() > 0) {
                     try {
-                        TrapSender.getINSTANCE().sendTrap(buffer);
+                        TrapSender.getINSTANCE().sendTrap(message);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

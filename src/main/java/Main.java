@@ -3,6 +3,7 @@ import model.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Map;
 
 //TODO Add email https://www.mkyong.com/java/java-how-to-send-email/
 //TODO Add Exception and log
@@ -28,7 +29,6 @@ public class Main {
                 command = br.readLine().toUpperCase();
                 switch (CommandType.valueOf(command)) {
                     case STATUS:
-                        //TODO print Active ComNumber, parsing and scheduler
                         if (comMonitor.getMsg() == null) {
                             System.out.println("Controller not connected ");
                         } else {
@@ -62,14 +62,21 @@ public class Main {
                         comMonitor.closePor();
                         System.out.println("THC001_Shell stop service...");
                         break;
+                    case ALERTS_LIST:
+                        System.out.println();
+                        for (Map.Entry alert : Config.get().getAlertsList().entrySet()) {
+                            System.out.println(alert.getKey() + " " + alert.getValue());
+                        }
+                        System.out.println();
+                        break;
                     case HELP:
                     case COMMAND_LIST:
-                    System.out.println();
-                    for (CommandType commandType : CommandType.values()) {
+                        System.out.println();
+                        for (CommandType commandType : CommandType.values()) {
                             System.out.println(commandType);
                         }
-                    System.out.println();
-                    break;
+                        System.out.println();
+                        break;
                 }
             } catch (IllegalArgumentException e) {
                 System.out.println();
