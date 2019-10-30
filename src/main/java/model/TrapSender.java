@@ -1,6 +1,5 @@
 package model;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
 import org.snmp4j.Snmp;
@@ -9,7 +8,6 @@ import org.snmp4j.mp.SnmpConstants;
 import org.snmp4j.smi.*;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
 
-import java.io.IOException;
 import java.util.Date;
 import java.util.Map;
 
@@ -30,19 +28,28 @@ public class TrapSender {
         community = settingsList.get("community");
         oid = settingsList.get("oid");
         ipAddress = settingsList.get("ip");
-        pause = Long.parseLong(settingsList.get("pause"))*1000;
+        pause = Long.parseLong(settingsList.get("pause")) * 1000;
     }
 
     public static TrapSender getINSTANCE() {
         return INSTANCE;
     }
 
+    public static String[] getSNMPSettings() {
+        String[] values = new String[4];
+        values[0] = String.valueOf(port);
+        values[1] = String.valueOf(community);
+        values[2] = String.valueOf(oid);
+        values[3] = String.valueOf(ipAddress);
+        return values;
+    }
+
     public void sendTrap(String text) {
-        if (Math.abs(lastSend - new Date().getTime())>pause) {
+        if (Math.abs(lastSend - new Date().getTime()) > pause) {
             /* Create Transport Mapping */
             lastSend = new Date().getTime();
             try {
-                TransportMapping transport = new DefaultUdpTransportMapping();
+                TransportMapping<UdpAddress> transport = new DefaultUdpTransportMapping();
                 transport.listen();
                 // Create Target
                 CommunityTarget cTarget = new CommunityTarget();
@@ -68,21 +75,9 @@ public class TrapSender {
                 //   System.out.println("Sending V2 Trap... Check Wheather NMS is Listening or not? ");
                 snmp.send(pdu, cTarget);
                 snmp.close();
-            }catch (Exception e){
+            } catch (Exception e) {
                 System.out.println("Lan error");
             }
         }
     }
-
-    public static String[] getSNMPSettings() {
-        String[] values = new String[4];
-        values[0] = String.valueOf(port);
-        values[1] = String.valueOf(community);
-        values[2] = String.valueOf(oid);
-        values[3] = String.valueOf(ipAddress);
-        return values;
-    }
-    /*         catch (Exception e) {
-                e.printStackTrace();
-        }*/
 }

@@ -62,7 +62,6 @@ public class ComMonitor extends Thread {
     public void closePor() {
         isPortOpen = false;
     }
-
 }
 
 

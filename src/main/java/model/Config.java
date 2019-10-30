@@ -15,13 +15,11 @@ public class Config {
     private Map<String, Double> alertsList = new HashMap<>();
     private Map<String, String> snmpSettings = new HashMap<>();
 
-
     private Config() {
         try (InputStream is = new FileInputStream(PROPERTIES_FILE)) {
             Properties properties = new Properties();
             properties.load(is);
             portNumber = properties.getProperty("port.number");
-
             alertsList.put("first.t.max", Double.parseDouble(properties.getProperty("first.t.max")));
             alertsList.put("first.t.min", Double.parseDouble(properties.getProperty("first.t.min")));
             alertsList.put("first.h.max", Double.parseDouble(properties.getProperty("first.h.max")));
@@ -30,14 +28,11 @@ public class Config {
             alertsList.put("second.h.max", Double.parseDouble(properties.getProperty("second.h.max")));
             alertsList.put("second.h.min", Double.parseDouble(properties.getProperty("second.h.min")));
             alertsList.put("second.t.max", Double.parseDouble(properties.getProperty("second.t.max")));
-
             snmpSettings.put("community", properties.getProperty("snmp.community"));
             snmpSettings.put("oid", properties.getProperty("snmp.oid"));
             snmpSettings.put("ip", properties.getProperty("snmp.ip"));
             snmpSettings.put("message", properties.getProperty("snmp.message"));
             snmpSettings.put("pause", properties.getProperty("snmp.pause"));
-
-
         } catch (Exception e) {
             throw new IllegalStateException("Invalid config file " + PROPERTIES_FILE.getAbsolutePath());
         }

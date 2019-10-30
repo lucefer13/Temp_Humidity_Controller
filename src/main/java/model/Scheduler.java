@@ -1,18 +1,16 @@
 package model;
 
-import java.io.IOException;
 import java.util.Map;
 
 public class Scheduler extends Thread {
     private final ComMonitor comMonitor;
-    private Boolean isMonitoring;
     private final String message;
+    private Boolean isMonitoring;
 
     Scheduler(ComMonitor comMonitor) {
         this.comMonitor = comMonitor;
         isMonitoring = true;
         message = Config.get().getSnmpSettings().get("message");
-
     }
 
     public void setMonitoring(Boolean monitoring) {
@@ -30,11 +28,7 @@ public class Scheduler extends Thread {
                 arrValue = msgFromMonitor.split(" ");
                 buffer = alertTest(arrValue, Config.get().getAlertsList());
                 if (buffer.length() > 0) {
-                    try {
-                        TrapSender.getINSTANCE().sendTrap(message);
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+                    TrapSender.getINSTANCE().sendTrap(message);
                 }
             }
             try {
@@ -61,7 +55,6 @@ public class Scheduler extends Thread {
                     .append(alertsList.get("first.t.min"))
                     .append("\n");
         } else sb.append("second sensor did't work \n");
-
         if (!"nan".equals(arrValue[3])) {
             if (Double.parseDouble(arrValue[3]) > alertsList.get("second.h.max")) sb.append("second humidity > ")
                     .append(alertsList.get("second.h.max"))
